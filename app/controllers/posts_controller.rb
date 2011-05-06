@@ -50,4 +50,11 @@ class PostsController < ApplicationController
       render :action => "edit"
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to(posts_url)
+  end
 end
