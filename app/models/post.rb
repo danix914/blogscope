@@ -8,4 +8,8 @@ class Post < ActiveRecord::Base
 #
 #  accepts_nested_attributes_for :tags, :allow_destroy => :true,
 #    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+
+  scope :publiced, where(:is_public => true)
+  scope :secret, where(:is_public => false)
+  scope :is_publiced, lambda { |show| where(:is_public => show) }
 end

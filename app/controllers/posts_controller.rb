@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+#    @posts = Post.all
+#    @posts = Post.where(:is_public => true)
+    @posts = Post.is_publiced(true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -56,5 +58,9 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to(posts_url)
+  end
+
+  def testpage
+    @posts = Post.publiced
   end
 end
