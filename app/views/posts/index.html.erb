@@ -27,4 +27,5 @@
 <br />
 
 <%= link_to 'New Post', new_post_path %> |
-<%= link_to 'not_public', not_public_posts_path %>
+<%= link_to 'not_public', not_public_posts_path %> |
+<%= will_paginate @posts %>

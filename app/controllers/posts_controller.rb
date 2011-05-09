@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
 #    @posts = Post.all
 #    @posts = Post.where(:is_public => true)
-    @posts = Post.is_publiced(true)
+    @posts = Post.is_publiced(true).paginate(:page => params[:page], :per_page => 3)
 
     respond_to do |format|
       format.html # index.html.erb
