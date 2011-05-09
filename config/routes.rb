@@ -1,7 +1,15 @@
 Blogscope::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    collection do
+      get :not_public#, :controller => "posts", :action => "show", :id => 3
+    end
+  end
+
   get "home/index"
   root :to => "home#index"
+
+  #collection :not_public
+  #get "/not_public", :controller => "posts", :action => "show", :id => 3
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

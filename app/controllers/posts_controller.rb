@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :find_Post, :only => [:show, :edit, :update, :destroy]
 
   def index
 #    @posts = Post.all
@@ -12,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
   end
 
   def new
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
   end
 
   def create
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
 
     if @post.update_attributes(params[:post])
       redirect_to(@post, :notice => 'Post updated!!<O>!!')
@@ -54,13 +55,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
     @post.destroy
 
     redirect_to(posts_url)
   end
 
-  def testpage
-    @posts = Post.publiced
+  def not_public
+    @posts = Post.is_publiced(false)
+  end
+
+  protected
+
+  def find_Post
+    @post = Post.find(params[:id])
   end
 end
