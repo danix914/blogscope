@@ -3,6 +3,7 @@ set :repository,  "git@github.com:danix914/blogscope.git"
 set :deploy_to, "/pixnet/weblib/blogscope"
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+ssh_options[:keys] = ["#{ENV['HOME']}/Download/det.pem"]
 
 role :web, "ec2-50-17-177-123.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
 role :app, "ec2-50-17-177-123.compute-1.amazonaws.com"                          # This may be the same as your `Web` server

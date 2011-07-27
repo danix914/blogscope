@@ -31,4 +31,5 @@ gem 'mysql2', '~>0.2.1'
 # end
 group :development do
   gem 'annotate'
+  gem 'capistrano'
 end
