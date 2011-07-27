@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
   before_filter :find_Post, :only => [:show, :edit, :update, :destroy]
+  #before_filter :login_required
+
+  require File.join(Rails.root, 'lib', 'authenticated_system.rb')
+  include AuthenticatedSystem
+
+  before_filter :login_required, :only => [:not_public]
 
   def index
 #    @posts = Post.all
@@ -9,6 +15,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
+      format.json { render :json => @posts }
     end
   end
 
