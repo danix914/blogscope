@@ -36,6 +36,11 @@
 </p>
 
 <p>
+<%= image_tag @post.avatar.url %>
+<%= image_tag @post.avatar.url(:medium) %>
+<%= image_tag @post.avatar.url(:thumb) %>
+</p>
+<p>
   <%#<b>Tags:</b>%>
   <%#<%= join_tags(@post) %>
 </p>
